@@ -1,9 +1,32 @@
 Doc_cat_Classification
 ==============================
 
-Dog and cat image classification
+
+![alt](https://storage.googleapis.com/kaggle-datasets-images/23777/30378/63f920316cce877d41395932d0d089d0/dataset-cover.jpg)
+
+## Overview
+
+This repository contains code and resources for a deep learning project that classifies images of dogs and cats. The project aims to build a model that can accurately distinguish between images of dogs and cats.
+
+## Table of Contents
+
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Dataset](#dataset)
+- [Training](#training)
+- [Inference](#inference)
+- [Evaluation](#evaluation)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Project Structure
+
+The project structure follows the Cookiecutter Data Science template for organizing data science projects. Here's a brief overview of the directory structure:
 
 Project Organization
+```
 ------------
 
     ├── LICENSE
@@ -51,7 +74,72 @@ Project Organization
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
-
 --------
+```
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Python 3.x
+- Dependencies listed in `requirements.txt`
+
+You can install the dependencies using pip:
+
+```shell
+pip install -r requirements.txt
+```
+
+## Getting Started
+
+1. Clone this repository:
+
+```shell
+git clone https://github.com/sadhiin/image_classification_dog_cat.git
+cd IMAGE_CLASSIFICATION_DOG_CAT
+```
+
+2. Set up your environment and install dependencies as mentioned in the Prerequisites section.
+
+## Dataset
+
+The dataset used for this project consists of a collection of labeled images of dogs and cats. You can find the dataset [here](https://www.kaggle.com/datasets/tongpython/cat-and-dog
+). Place the dataset in the `data/raw` directory.
+
+## Training
+
+To train the model, use the following command:
+
+```shell
+python src/models/train.py --config config.yaml
+```
+
+## Inference
+
+You can use the trained model for inference by running:
+
+```shell
+python src/inference/predict.py --model-path /path/to/saved/model --input-image /path/to/input/image
+```
+
+## Evaluation
+
+You can evaluate the model's performance using:
+
+```shell
+python src/evaluation/evaluate.py --model-path /path/to/saved/model --test-data /path/to/test/dataset
+```
+
+## Results
+
+Provide details about the model's performance, including accuracy, loss, and any other relevant metrics. Include visualizations or graphs if possible.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please create an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/sadhiin/image_classification_dog_cat/blob/main/LICENSE) file for details.
