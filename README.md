@@ -1,6 +1,6 @@
 Doc_cat_Classification
 ==============================
-<img src="https://storage.googleapis.com/kaggle-datasets-images/23777/30378/63f920316cce877d41395932d0d089d0/dataset-cover.jpg" width=100% height=100%>
+<img src="https://storage.googleapis.com/kaggle-media/competitions/kaggle/3362/media/woof_meow.jpg" width=100% height=100%>
 
 ## Overview
 
