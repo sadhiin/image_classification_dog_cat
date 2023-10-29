@@ -1,0 +1,26 @@
+base:
+  project: Image Classification Dog & Cat
+  random_state: 42
+  batch_size: 16
+  width: 256
+  height: 256
+
+data_source:
+  train: data/raw/training_set
+  test: data/raw/test_set
+
+modelcompile:
+  loss: binary_crossentropy
+  optimizer : adam
+  metrics: accuracy
+  checkpoint: src/models/model_ckpt
+  savemodel: models/
+
+training_config:
+  epoch: 2
+
+split_data:
+  validation_size: 0.2
+
+
+# webapp_model_dir: prediction_service/model/model.joblib
