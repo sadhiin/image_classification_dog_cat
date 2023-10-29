@@ -80,8 +80,23 @@ Project Organization
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
+- [conda](https://docs.conda.io/en/latest/miniconda.html)
+- [git](https://git-scm.com/)
 
-- Python 3.x
+### Environment Setup
+
+1. Create a conda environment for this project:
+
+```bash
+conda create -n winequality_mlops python=3.10 -y
+```
+
+2. Activate the environment:
+
+```bash
+conda activate winequality_mlops
+```
+
 - Dependencies listed in `requirements.txt`
 
 You can install the dependencies using pip:
