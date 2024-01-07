@@ -1,10 +1,13 @@
-Doc_cat_Classification
+Dog Cat Classification
 ==============================
 <img src="https://storage.googleapis.com/kaggle-media/competitions/kaggle/3362/media/woof_meow.jpg" width=100% height=100%>
+
 
 ## Overview
 
 This repository contains code and resources for a deep learning project that classifies images of dogs and cats. The project aims to build a model that can accurately distinguish between images of dogs and cats.
+
+<img src="https://miro.medium.com/max/700/1*oB3S5yHHhvougJkPXuc8og.gif" width=100% height=100%>
 
 ## Table of Contents
 
@@ -88,20 +91,20 @@ Before you begin, ensure you have met the following requirements:
 1. Create a conda environment for this project:
 
 ```bash
-conda create -n winequality_mlops python=3.10 -y
+conda create -n dogcat python=3.10 -y
 ```
 
 2. Activate the environment:
 
 ```bash
-conda activate winequality_mlops
+conda activate dogcat
 ```
 
 - Dependencies listed in `requirements.txt`
 
 You can install the dependencies using pip:
 
-```shell
+```bash
 pip install -r requirements.txt
 ```
 
@@ -109,7 +112,7 @@ pip install -r requirements.txt
 
 1. Clone this repository:
 
-```shell
+```bash
 git clone https://github.com/sadhiin/image_classification_dog_cat.git
 cd IMAGE_CLASSIFICATION_DOG_CAT
 ```

@@ -1,41 +1,47 @@
-import os
-import yaml
 import logging
 import argparse
 from cnn import CNN_Model
-import src.utils.getconfig as readconfig
+from src.utils.getconfig import read_params
 import src.utils.preprocess as preprocessing
-
+from src.utils.keras_cbs import get_callbacks
 
 def compile_model(config_path):
-    config = readconfig.read_params(config_path)
+    config = read_params(config_path)
+    logging.info(f"Loading the model")
 
     model = CNN_Model()
-    model.compile(
-        loss=config['modelcompile']['loss'],
-        optimizer= config['modelcompile']['optimizer'],
-        metrics = [config['modelcompile']['metrics']]
-    )
+    logging.info(f"Model loaded")
 
+    logging.info(model.summary())
+
+    model.compile(
+        loss=config['model']['loss'],
+        optimizer=config['model']['optimizer'],
+        metrics=[config['model']['metrics']]
+    )
+    logging.info(f"Compiling model with {config['model']['optimizer']} optimizer")
+    logging.info(f"Compiling model with {config['model']['loss']} loss and {config['model']['metrics']} metrics")
     return model
 
 
-def train_model(config_path, model, get_training_history: bool):
-    config = readconfig.read_params(config_path)
+def train_model(config_path, get_training_history: bool = True):
+    config = read_params(config_path)
+
     model = compile_model(config_path)
-    train_set = preprocessing.get_train_set()
-    val_set= preprocessing.get_validation_set()
-    test_set = preprocessing.get_test_set()
+
+    train_set = preprocessing.get_train_set(config_path)
+    val_set = preprocessing.get_validation_set(config_path)
     bs = config['base']['batch_size']
 
-    history= model.fit(
+    history = model.fit(
         train_set,
-        steps_per_epoch= len(train_set)//bs,
-        epochs= config['training_config']['epoch'],
-        validation_data= val_set,
-        # callbacks= CBS
+        validation_data=val_set,
+        steps_per_epoch=len(train_set)//bs,
+        validation_steps=len(val_set)//bs
+        epochs=config['training_config']['epoch'],
+        callbacks=[get_callbacks(config_path)]
     )
-
+    model.save(config['model']['savemodel'])
     if get_training_history:
         return history
 

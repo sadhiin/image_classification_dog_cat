@@ -1,20 +1,21 @@
 base:
   project: Image Classification Dog & Cat
   random_state: 42
-  batch_size: 16
+  batch_size: 8
   width: 256
   height: 256
+  class_mode: binary
 
 data_source:
   train: data/raw/training_set
   test: data/raw/test_set
 
-modelcompile:
+model:
   loss: binary_crossentropy
   optimizer : adam
   metrics: accuracy
   checkpoint: src/models/model_ckpt
-  savemodel: models/
+  savemodel: models/model.keras
 
 training_config:
   epoch: 2
