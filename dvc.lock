@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  data_generation:
+    cmd: python src/utils/preprocess.py --config=params.yaml
+    deps:
+    - path: data/raw/test_set
+      hash: md5
+      md5: 662631c5b03e3ab00175a03dd175edf6.dir
+      size: 46277083
+      nfiles: 2025
+    - path: data/raw/training_set
+      hash: md5
+      md5: 99f571bd3f9dc244d2814f84fac21ef2.dir
+      size: 182182302
+      nfiles: 8007

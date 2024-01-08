@@ -1,6 +1,6 @@
 import logging
 import argparse
-from cnn import CNN_Model
+from src.models.cnn import CNN_Model
 from src.utils.getconfig import read_params
 import src.utils.preprocess as preprocessing
 from src.utils.keras_cbs import get_callbacks
@@ -37,7 +37,7 @@ def train_model(config_path, get_training_history: bool = True):
         train_set,
         validation_data=val_set,
         steps_per_epoch=len(train_set)//bs,
-        validation_steps=len(val_set)//bs
+        validation_steps=len(val_set)//bs,
         epochs=config['training_config']['epoch'],
         callbacks=[get_callbacks(config_path)]
     )

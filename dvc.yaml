@@ -1,22 +1,22 @@
 stages:
   data_generation:
-  cmd: python src/utils/preprocess.py --config=params.yaml
-  deps:
-  - data/raw/training_set
-  - data/raw/test_set
+    cmd: python src/utils/preprocess.py --config=params.yaml
+    deps:
+    - data/raw/training_set
+    - data/raw/test_set
 
   train_and_evaluate:
-  cmd: python src/train_model.py --config=params.yaml
-  deps:
-  - src/train_model.py
-  - src/utils/preporcess.py
-  - src/utils/getconfig.py
-  - src/utils/keras_cbs.py
+    cmd: python src/train_model.py --config=params.yaml
+    deps:
+    - src/train_model.py
+    - src/utils/preprocess.py  # Fixed typo in the dependency name
+    - src/utils/getconfig.py
+    - src/utils/keras_cbs.py
 
   evaluate:
-  cmd: python src/model_eval.py --config=params.yaml
-  deps:
-  - src/model_eval.py
-  - src/utils/getconfig.py
-  - src/utils/preprocess.py
-  
+    cmd: python src/model_eval.py --config=params.yaml
+    deps:
+    - src/model_eval.py
+    - src/utils/getconfig.py
+    - src/utils/preprocess.py
+
