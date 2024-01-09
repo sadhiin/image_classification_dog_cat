@@ -1,11 +1,4 @@
 stages:
-  get_data:
-    cmd: python src/data/make_dataset.py --config=params.yaml
-    deps:
-    - src/utils/getconfig.py
-    outs:
-    - data/raw
-    
   data_generation:
     cmd: python src/utils/preprocess.py --config=params.yaml
     deps:
