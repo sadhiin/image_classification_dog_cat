@@ -1,31 +1,29 @@
 # -*- coding: utf-8 -*-
 import click
-import logging
-from pathlib import Path
+import argparse
+from src import logger
+import opendatasets as od
+from src.utils.getconfig import read_params
 from dotenv import find_dotenv, load_dotenv
 
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
 @click.argument('output_filepath', type=click.Path())
-
-def main(input_filepath, output_filepath):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
-    """
-    logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
-
+def get_data(config_path):
+    try:
+        config = read_params(config_path)
+        dataset_url = config["data_source"]["remote_source"]
+        save_dir = config["data_source"]["local_source"]
+        logger.info(f"Downloading the data from {dataset_url}")
+        od.download(dataset_id_or_url=dataset_url, data_dir=save_dir, force=True)
+        logger.info(f"Data downloaded at {save_dir}")
+    except Exception as e:
+        logger.error(f"Error at downloading the data: {e}")
 
 if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    args = argparse.ArgumentParser()
+    args.add_argument("--config", default="params.yaml")
+    parsed_args = args.parse_args()
 
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
-
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
-
-    main()
+    get_data(parsed_args.config)

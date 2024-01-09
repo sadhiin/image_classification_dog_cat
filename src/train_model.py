@@ -1,5 +1,5 @@
-import logging
 import argparse
+from src import logger
 from src.models.cnn import CNN_Model
 from src.utils.getconfig import read_params
 import src.utils.preprocess as preprocessing
@@ -7,20 +7,20 @@ from src.utils.keras_cbs import get_callbacks
 
 def compile_model(config_path):
     config = read_params(config_path)
-    logging.info(f"Loading the model")
+    logger.info(f"Loading the model")
 
     model = CNN_Model()
-    logging.info(f"Model loaded")
+    logger.info(f"Model loaded")
 
-    logging.info(model.summary())
+    logger.info(model.summary())
 
     model.compile(
         loss=config['model']['loss'],
         optimizer=config['model']['optimizer'],
         metrics=[config['model']['metrics']]
     )
-    logging.info(f"Compiling model with {config['model']['optimizer']} optimizer")
-    logging.info(f"Compiling model with {config['model']['loss']} loss and {config['model']['metrics']} metrics")
+    logger.info(f"Compiling model with {config['model']['optimizer']} optimizer")
+    logger.info(f"Compiling model with {config['model']['loss']} loss and {config['model']['metrics']} metrics")
     return model
 
 

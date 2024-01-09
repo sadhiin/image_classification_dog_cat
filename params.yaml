@@ -7,6 +7,9 @@ base:
   class_mode: binary
 
 data_source:
+  remote_source: https://www.kaggle.com/datasets/salader/dogs-vs-cats
+  local_source: data/raw
+
   train: data/raw/training_set
   test: data/raw/test_set
 
