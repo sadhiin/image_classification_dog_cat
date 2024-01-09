@@ -4,13 +4,12 @@ stages:
     deps:
     - src/utils/getconfig.py
     outs:
-    - data/raw/
+    - data/raw
     
   data_generation:
     cmd: python src/utils/preprocess.py --config=params.yaml
     deps:
-    - data/raw/training_set
-    - data/raw/test_set
+    - data/raw/
 
   train_and_evaluate:
     cmd: python src/train_model.py --config=params.yaml

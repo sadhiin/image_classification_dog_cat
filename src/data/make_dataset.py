@@ -7,9 +7,9 @@ from src.utils.getconfig import read_params
 from dotenv import find_dotenv, load_dotenv
 
 
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
+# @click.command()
+# @click.argument('input_filepath', type=click.Path(exists=True))
+# @click.argument('output_filepath', type=click.Path())
 def get_data(config_path):
     try:
         config = read_params(config_path)
