@@ -36,14 +36,7 @@ def get_train_set(config_path):
         class_mode=config["base"]["class_mode"],
         subset="training"
     )
-    return training_set
-
-
-def get_validation_set(config_path):
-    config = read_params(config_path)
-
-    # set as training data
-    train_datagen = tain_generetor()
+    
     validation_set = train_datagen.flow_from_directory(
         config["data_source"]["train"],
         target_size=(config["base"]["width"], config["base"]["height"]),
@@ -51,8 +44,17 @@ def get_validation_set(config_path):
         class_mode=config["base"]["class_mode"],
         subset="validation"
     )
+    return training_set, validation_set
 
-    return validation_set
+
+# def get_validation_set(config_path):
+#     config = read_params(config_path)
+
+#     # set as training data
+#     train_datagen = tain_generetor()
+    
+
+#     return validation_set
 
 
 def get_test_set(config_path):

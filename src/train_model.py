@@ -29,9 +29,10 @@ def train_model(config_path, get_training_history: bool = True):
 
     model = compile_model(config_path)
 
-    train_set = preprocessing.get_train_set(config_path)
-    val_set = preprocessing.get_validation_set(config_path)
-    bs = config['base']['batch_size']
+    train_set, val_set= preprocessing.get_train_set(config_path)
+    # val_set = preprocessing.get_validation_set(config_path)
+    
+    bs = int(config['base']['batch_size'])
 
     history = model.fit(
         train_set,
