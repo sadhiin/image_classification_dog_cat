@@ -18,7 +18,7 @@ def get_callbacks(config_path):
     log_path = get_log_path()
 
     config = read_params(config_path)
-    file_name = os.path.join(config['model']['checkpoint'], "model_ckpt", "h5")
+    file_name = config['model']['checkpoint']+"model.h5"
     callbacks = [
         tf.keras.callbacks.ModelCheckpoint(
             filepath=file_name, save_best_only=True, monitor='val_loss', mode='min'),

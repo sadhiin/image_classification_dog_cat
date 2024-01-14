@@ -14,4 +14,4 @@ logging.basicConfig(level=logging.INFO,
                         logging.StreamHandler(sys.stdout)
                     ])
 
-logger = logging.getLogger("kindeyDiseaseClassification")
+logger = logging.getLogger("src")

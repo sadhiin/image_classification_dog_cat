@@ -73,5 +73,5 @@ if __name__ == "__main__":
     parsed_args = args.parse_args()
 
     get_train_set(config_path=parsed_args.config)
-    get_validation_set(config_path=parsed_args.config)
+    # get_validation_set(config_path=parsed_args.config)
     get_test_set(config_path=parsed_args.config)

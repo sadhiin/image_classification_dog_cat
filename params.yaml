@@ -21,7 +21,7 @@ model:
   savemodel: models/model.keras
 
 training_config:
-  epoch: 2
+  epoch: 3
 
 split_data:
   validation_size: 0.2
